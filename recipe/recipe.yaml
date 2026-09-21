@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyseobnr
-  version: 0.3.6
+  version: 0.3.7
   # choose the oldest scipy possible, to maximise compatibility with user environments
   scipy_version: "1.17"
   scipy_version_v312: "1.13"
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyseobnr-${{ version }}.tar.gz
-  sha256: 46508432709e637e6661252b55675bfb002a4425b770bb94b0bb4194ccdc5b97
+  sha256: a3125f4b7ba680bb0f0c64f6fc644e1ccb663805d78052b40803f30fd6bbb581
   patches:
     - nolalsuite-in-pyproject.patch
 
@@ -22,6 +22,7 @@ build:
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip:
     - win
+    - match(python, ">=3.14")
 
 requirements:
   build:
